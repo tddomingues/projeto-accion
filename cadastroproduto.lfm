@@ -1,0 +1,5 @@
+inherited cadCadastroProdutoF: TcadCadastroProdutoF
+  Left = 406
+  Top = 207
+  Caption = 'Cadastro Produto'
+end

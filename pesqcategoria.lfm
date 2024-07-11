@@ -1,0 +1,98 @@
+object pesqCategoriaF: TpesqCategoriaF
+  Left = 797
+  Height = 299
+  Top = 224
+  Width = 376
+  Caption = 'Pesquisar Categoria'
+  ClientHeight = 299
+  ClientWidth = 376
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '3.4.0.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 56
+    Top = 0
+    Width = 376
+    Align = alTop
+    ClientHeight = 56
+    ClientWidth = 376
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 24
+      Height = 15
+      Top = 23
+      Width = 110
+      Caption = 'Id Categoria Produto'
+    end
+    object BitBtn1: TBitBtn
+      Left = 240
+      Height = 30
+      Top = 9
+      Width = 75
+      Caption = 'Buscar'
+      OnClick = BitBtn1Click
+      TabOrder = 0
+    end
+    object editPesqCategoriaId: TEdit
+      Left = 144
+      Height = 23
+      Top = 15
+      Width = 80
+      TabOrder = 1
+    end
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 100
+    Top = 56
+    Width = 376
+    Align = alTop
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'Id Categoria Produto'
+        FieldName = 'categoria_produto_id'
+      end    
+      item
+        Title.Caption = 'Descrição'
+        FieldName = 'ds_categoria_produto'
+      end>
+    DataSource = dsPesqCategoria
+    TabOrder = 1
+    OnDblClick = DBGrid1DblClick
+  end
+  object dsPesqCategoria: TDataSource
+    DataSet = qryPesqCategoria
+    Left = 96
+    Top = 144
+  end
+  object qryPesqCategoria: TZQuery
+    Connection = DataModule1.ZConnection1
+    SQL.Strings = (
+      'select * from categoria_produto'
+    )
+    Params = <>
+    Left = 187
+    Top = 132
+    object qryPesqCategoriacategoria_produto_id: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'categoria_produto_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryPesqCategoriads_categoria_produto: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ds_categoria_produto'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 50
+    end
+  end
+end

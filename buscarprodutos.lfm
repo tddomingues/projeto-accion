@@ -1,0 +1,156 @@
+object buscarProdutosF: TbuscarProdutosF
+  Left = 993
+  Height = 240
+  Top = 228
+  Width = 549
+  Caption = 'Buscar Produtos'
+  ClientHeight = 240
+  ClientWidth = 549
+  OnClose = FormClose
+  OnShow = FormShow
+  LCLVersion = '3.4.0.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 240
+    Top = 0
+    Width = 549
+    Align = alClient
+    Caption = 'Panel1'
+    ClientHeight = 240
+    ClientWidth = 549
+    TabOrder = 0
+    object DBGrid1: TDBGrid
+      Left = 1
+      Height = 238
+      Top = 1
+      Width = 547
+      Align = alClient
+      AutoFillColumns = True
+      Color = clWindow
+      Columns = <      
+        item
+          Title.Caption = 'Id Produto'
+          Width = 74
+          FieldName = 'produto_id'
+        end      
+        item
+          Title.Caption = 'Id Categoria Produto'
+          Width = 74
+          FieldName = 'categoria_produto_id'
+        end      
+        item
+          Title.Caption = 'Descrição'
+          Width = 74
+          FieldName = 'ds_produto'
+        end      
+        item
+          Title.Caption = 'Observação'
+          Width = 73
+          FieldName = 'obs_produto'
+        end      
+        item
+          Title.Caption = 'Valor'
+          Width = 73
+          FieldName = 'vl_venda_produto'
+        end      
+        item
+          Title.Caption = 'Data Cadastro'
+          Width = 73
+          FieldName = 'dt_cadastro_produto'
+        end      
+        item
+          Title.Caption = 'Status'
+          Width = 73
+          FieldName = 'status_produto'
+        end>
+      DataSource = dsBuscarProdutos
+      TabOrder = 0
+      OnDblClick = DBGrid1DblClick
+    end
+  end
+  object dsBuscarProdutos: TDataSource
+    DataSet = qryBuscarProdutos
+    Left = 181
+    Top = 128
+  end
+  object qryBuscarProdutos: TZQuery
+    Connection = DataModule1.ZConnection1
+    SQL.Strings = (
+      'select * from produto'
+    )
+    Params = <>
+    Left = 181
+    Top = 52
+    object qryBuscarProdutosproduto_id: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'produto_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryBuscarProdutoscategoria_produto_id: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'categoria_produto_id'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryBuscarProdutosds_produto: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ds_produto'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 50
+    end
+    object qryBuscarProdutosobs_produto: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'obs_produto'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 300
+    end
+    object qryBuscarProdutosvl_venda_produto: TZBCDField
+      FieldKind = fkData
+      FieldName = 'vl_venda_produto'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Precision = 15
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qryBuscarProdutosdt_cadastro_produto: TZDateTimeField
+      FieldKind = fkData
+      FieldName = 'dt_cadastro_produto'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryBuscarProdutosstatus_produto: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'status_produto'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 10
+    end
+  end
+end

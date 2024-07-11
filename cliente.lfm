@@ -1,0 +1,220 @@
+inherited clienteF: TclienteF
+  Left = 550
+  Top = 220
+  Caption = 'Cliente'
+  OnClose = FormClose
+  OnShow = FormShow
+  inherited PageControl1: TPageControl
+    ActivePage = tsPesquisa
+    TabIndex = 0
+    inherited tsPesquisa: TTabSheet
+      inherited Panel1: TPanel
+        inherited BitBtn1: TBitBtn
+          OnClick = BitBtn1Click
+        end
+        inherited btnFecharCadMod: TBitBtn
+          OnClick = btnFecharCadModClick
+        end
+      end
+      inherited DBGrid1: TDBGrid
+        AutoFillColumns = True
+        Columns = <        
+          item
+            PickList.Strings = (            )
+            Title.Caption = 'Id Cliente'
+            Width = 151
+            FieldName = 'cliente_id'
+          end        
+          item
+            PickList.Strings = (            )
+            Title.Caption = 'Tipo (F/J)'
+            Width = 151
+            FieldName = 'tipo_cliente'
+          end        
+          item
+            PickList.Strings = (            )
+            Title.Caption = 'CPF/CNPJ'
+            Width = 151
+            FieldName = 'cpf_cnpj_cliente'
+          end        
+          item
+            PickList.Strings = (            )
+            Title.Caption = 'Nome'
+            Width = 151
+            FieldName = 'nome_cliente'
+          end>
+        DataSource = dsCliente
+      end
+      inherited Panel2: TPanel
+        inherited btnBuscarCod: TBitBtn
+          OnClick = btnBuscarCodClick
+        end
+      end
+    end
+    inherited tsCadastro: TTabSheet
+      inherited Panel3: TPanel
+        Height = 48
+        Top = 416
+        ClientHeight = 48
+        inherited btnExcluir: TBitBtn
+          Left = 192
+          OnClick = btnExcluirClick
+        end
+        inherited btnImprimir: TBitBtn
+          Left = 368
+        end
+        inherited btnCancelar: TBitBtn
+          OnClick = btnCancelarClick
+        end
+        inherited btnGravar: TBitBtn
+          OnClick = btnGravarClick
+        end
+      end
+      object Panel4: TPanel[1]
+        Left = 0
+        Height = 416
+        Top = 0
+        Width = 637
+        Align = alTop
+        ClientHeight = 416
+        ClientWidth = 637
+        TabOrder = 1
+        object Label2: TLabel
+          Left = 16
+          Height = 15
+          Top = 16
+          Width = 10
+          Caption = 'Id'
+        end
+        object Label3: TLabel
+          Left = 16
+          Height = 15
+          Top = 72
+          Width = 33
+          Caption = 'Nome'
+        end
+        object Label4: TLabel
+          Left = 16
+          Height = 15
+          Top = 128
+          Width = 53
+          Caption = 'CPF/CNPJ'
+        end
+        object Label6: TLabel
+          Left = 63
+          Height = 15
+          Top = 16
+          Width = 105
+          Caption = 'Tipo de Cliente (F/J)'
+        end
+        object DBEdit1: TDBEdit
+          Left = 16
+          Height = 23
+          Top = 32
+          Width = 32
+          DataField = 'cliente_id'
+          DataSource = dsCliente
+          Alignment = taRightJustify
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object DBEdit2: TDBEdit
+          Left = 16
+          Height = 23
+          Top = 88
+          Width = 256
+          DataField = 'nome_cliente'
+          DataSource = dsCliente
+          MaxLength = 0
+          TabOrder = 1
+        end
+        object DBEdit3: TDBEdit
+          Left = 16
+          Height = 23
+          Top = 144
+          Width = 152
+          DataField = 'cpf_cnpj_cliente'
+          DataSource = dsCliente
+          MaxLength = 0
+          TabOrder = 2
+        end
+        object DBComboBox1: TDBComboBox
+          Left = 68
+          Height = 23
+          Top = 32
+          Width = 100
+          DataField = 'tipo_cliente'
+          DataSource = dsCliente
+          ItemHeight = 15
+          Items.Strings = (
+            'F'
+            'J'
+          )
+          MaxLength = 0
+          TabOrder = 3
+        end
+      end
+    end
+  end
+  object Label5: TLabel[1]
+    Left = 16
+    Height = 15
+    Top = 128
+    Width = 34
+    Caption = 'Label5'
+  end
+  object dsCliente: TDataSource[2]
+    DataSet = qryCliente
+    Left = 224
+    Top = 109
+  end
+  object qryCliente: TZQuery[3]
+    Connection = DataModule1.ZConnection1
+    OnNewRecord = qryClienteNewRecord
+    SQL.Strings = (
+      'select * from cliente'
+    )
+    Params = <>
+    Left = 307
+    Top = 126
+    object qryClientecliente_id: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'cliente_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryClientetipo_cliente: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'tipo_cliente'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 1
+    end
+    object qryClientecpf_cnpj_cliente: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'cpf_cnpj_cliente'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 18
+    end
+    object qryClientenome_cliente: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome_cliente'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+  end
+end

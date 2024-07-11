@@ -1,0 +1,141 @@
+inherited cadCategoriaProdutosF: TcadCategoriaProdutosF
+  Left = 816
+  Top = 194
+  Caption = 'Categoria de Produtos'
+  OnClose = FormClose
+  OnShow = FormShow
+  inherited PageControl1: TPageControl
+    ActivePage = tsPesquisa
+    TabIndex = 0
+    inherited tsPesquisa: TTabSheet
+      inherited Panel1: TPanel
+        inherited BitBtn1: TBitBtn
+          OnClick = BitBtn1Click
+        end
+        inherited btnFecharCadMod: TBitBtn
+          OnClick = btnFecharCadModClick
+        end
+      end
+      inherited DBGrid1: TDBGrid
+        AutoFillColumns = True
+        Columns = <        
+          item
+            PickList.Strings = (            )
+            Title.Caption = 'Id Categoria Produto'
+            Width = 302
+            FieldName = 'categoria_produto_id'
+          end        
+          item
+            PickList.Strings = (            )
+            Title.Caption = 'Descrição'
+            Width = 302
+            FieldName = 'ds_categoria_produto'
+          end>
+        DataSource = dsCategoriaProduto
+      end
+      inherited Panel2: TPanel
+        inherited btnBuscarCod: TBitBtn
+          OnClick = btnBuscarCodClick
+        end
+      end
+    end
+    inherited tsCadastro: TTabSheet
+      inherited Panel3: TPanel
+        inherited btnExcluir: TBitBtn
+          OnClick = btnExcluirClick
+          TabOrder = 2
+        end
+        inherited btnImprimir: TBitBtn
+          TabOrder = 3
+        end
+        inherited btnCancelar: TBitBtn
+          OnClick = btnCancelarClick
+          TabOrder = 0
+        end
+        inherited btnGravar: TBitBtn
+          OnClick = btnGravarClick
+          TabOrder = 1
+        end
+      end
+      object Panel4: TPanel[1]
+        Left = 0
+        Height = 218
+        Top = 0
+        Width = 637
+        Align = alTop
+        ClientHeight = 218
+        ClientWidth = 637
+        TabOrder = 1
+        object dbEditDescricao: TDBEdit
+          Left = 16
+          Height = 23
+          Top = 72
+          Width = 264
+          DataField = 'ds_categoria_produto'
+          DataSource = dsCategoriaProduto
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object Label3: TLabel
+          Left = 16
+          Height = 15
+          Top = 56
+          Width = 51
+          Caption = 'Descrição'
+        end
+        object dbEditId: TDBEdit
+          Left = 16
+          Height = 23
+          Top = 24
+          Width = 40
+          DataField = 'categoria_produto_id'
+          DataSource = dsCategoriaProduto
+          Alignment = taRightJustify
+          MaxLength = 0
+          TabOrder = 1
+        end
+        object Label2: TLabel
+          Left = 16
+          Height = 15
+          Top = 8
+          Width = 11
+          Caption = 'ID'
+        end
+      end
+    end
+  end
+  object qryCategoriaProduto: TZQuery[1]
+    Connection = DataModule1.ZConnection1
+    OnNewRecord = qryCategoriaProdutoNewRecord
+    SQL.Strings = (
+      'select * from categoria_produto;'
+    )
+    Params = <>
+    Left = 512
+    Top = 112
+    object qryCategoriaProdutocategoria_produto_id: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'categoria_produto_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryCategoriaProdutods_categoria_produto: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ds_categoria_produto'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 50
+    end
+  end
+  object dsCategoriaProduto: TDataSource[2]
+    DataSet = qryCategoriaProduto
+    Left = 440
+    Top = 112
+  end
+end

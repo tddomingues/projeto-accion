@@ -1,0 +1,108 @@
+object buscarClientesF: TbuscarClientesF
+  Left = 554
+  Height = 240
+  Top = 253
+  Width = 320
+  Caption = 'Buscar Cliente'
+  ClientHeight = 240
+  ClientWidth = 320
+  OnClose = FormClose
+  OnShow = FormShow
+  LCLVersion = '3.4.0.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 240
+    Top = 0
+    Width = 320
+    Align = alClient
+    ClientHeight = 240
+    ClientWidth = 320
+    TabOrder = 0
+    object DBGrid1: TDBGrid
+      Left = 1
+      Height = 238
+      Top = 1
+      Width = 318
+      Align = alClient
+      AutoFillColumns = True
+      Color = clWindow
+      Columns = <      
+        item
+          Title.Caption = 'Id Cliente'
+          Width = 72
+          FieldName = 'cliente_id'
+        end      
+        item
+          Title.Caption = 'Tipo Cliente (J/F)'
+          Width = 71
+          FieldName = 'tipo_cliente'
+        end      
+        item
+          Title.Caption = 'CPF/CNPJ'
+          Width = 71
+          FieldName = 'cpf_cnpj_cliente'
+        end      
+        item
+          Title.Caption = 'Nome'
+          Width = 71
+          FieldName = 'nome_cliente'
+        end>
+      DataSource = dsBuscarCliente
+      TabOrder = 0
+      OnDblClick = DBGrid1DblClick
+    end
+  end
+  object dsBuscarCliente: TDataSource
+    DataSet = qryBuscarCliente
+    Left = 188
+    Top = 68
+  end
+  object qryBuscarCliente: TZQuery
+    Connection = DataModule1.ZConnection1
+    SQL.Strings = (
+      'select * from cliente'
+    )
+    Params = <>
+    Left = 168
+    Top = 16
+    object qryBuscarClientecliente_id: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'cliente_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryBuscarClientetipo_cliente: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'tipo_cliente'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 1
+    end
+    object qryBuscarClientecpf_cnpj_cliente: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'cpf_cnpj_cliente'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 18
+    end
+    object qryBuscarClientenome_cliente: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome_cliente'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+  end
+end
