@@ -4,8 +4,7 @@
 
 ## RESULTADO
 
-![preview](https://github.com/tddomingues/projeto-accion/assets/129981877/55b381b4-24d0-49c6-be24-4c3d42fdc2f6)
-
+https://github.com/tddomingues/projeto-accion/assets/129981877/55b381b4-24d0-49c6-be24-4c3d42fdc2f6
 
 ## DESCRIÇÃO
 
